@@ -1,12 +1,12 @@
 package ru.job4j.puzzle;
 
+import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
-@Ignore
 public class WinTest {
     @Test
     public void whenVerticalWin() {
@@ -54,5 +54,57 @@ public class WinTest {
                 {1, 1, 1, 1, 0},
         };
         assertThat(Win.check(board), is(false));
+    }
+
+    @Test
+    public void whenVerticalHasMono() {
+        int[][] board = {
+                {0, 0, 1, 0, 0},
+                {0, 0, 1, 0, 0},
+                {0, 0, 1, 0, 0},
+                {0, 0, 1, 0, 0},
+                {0, 0, 1, 0, 0},
+        };
+        boolean result = Win.checkVertical(board);
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void whenVerticalHasNoMono() {
+        int[][] board = {
+                {0, 0, 1, 0, 0},
+                {0, 0, 1, 0, 0},
+                {0, 0, 1, 0, 0},
+                {0, 0, 0, 0, 0},
+                {0, 0, 1, 0, 0},
+        };
+        boolean result = Win.checkVertical(board);
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void whenHorizontalHasMono() {
+        int[][] board = {
+                {0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0},
+                {1, 1, 1, 1, 1},
+                {0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0},
+        };
+        boolean result = Win.checkHorizontal(board);
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void whenHorizontalHasNoMono() {
+        int[][] board = {
+                {0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0},
+                {0, 0, 0, 1, 0},
+                {1, 1, 1, 1, 0},
+        };
+        boolean result = Win.checkHorizontal(board);
+        Assert.assertFalse(result);
     }
 }

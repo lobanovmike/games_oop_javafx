@@ -65,7 +65,8 @@ public class WinTest {
                 {0, 0, 1, 0, 0},
                 {0, 0, 1, 0, 0},
         };
-        boolean result = Win.checkVertical(board);
+        int column = 2;
+        boolean result = Win.checkVertical(board, column);
         Assert.assertTrue(result);
     }
 
@@ -78,7 +79,8 @@ public class WinTest {
                 {0, 0, 0, 0, 0},
                 {0, 0, 1, 0, 0},
         };
-        boolean result = Win.checkVertical(board);
+        int column = 2;
+        boolean result = Win.checkVertical(board, column);
         Assert.assertFalse(result);
     }
 
@@ -91,7 +93,8 @@ public class WinTest {
                 {0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0},
         };
-        boolean result = Win.checkHorizontal(board);
+        int row = 2;
+        boolean result = Win.checkHorizontal(board, row);
         Assert.assertTrue(result);
     }
 
@@ -104,7 +107,8 @@ public class WinTest {
                 {0, 0, 0, 1, 0},
                 {1, 1, 1, 1, 0},
         };
-        boolean result = Win.checkHorizontal(board);
+        int row = 4;
+        boolean result = Win.checkHorizontal(board, row);
         Assert.assertFalse(result);
     }
 }
